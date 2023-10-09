@@ -1,4 +1,4 @@
-
+# Import necessary libraries
 from fastapi import FastAPI, HTTPException
 from starlette.responses import JSONResponse
 from datetime import datetime
@@ -6,18 +6,25 @@ import joblib
 from joblib import load
 import pandas as pd
 
+# Create a FastAPI application instance
 app = FastAPI()
 
+# Define a list of store names
 store_names = ['store_CA_1', 'store_CA_2', 'store_CA_3', 'store_CA_4', 'store_TX_1',
                'store_TX_2', 'store_TX_3', 'store_WI_1', 'store_WI_2', 'store_WI_3']
 
+# Define a list of store IDS
 store_ids = ['CA_1', 'CA_2', 'CA_3', 'CA_4', 'TX_1', 'TX_2', 'TX_3', 'WI_1', 'WI_2', 'WI_3']
 
+
+# Read a list of unique item IDs from a CSV file
 list_of_unique_item_ids = pd.read_csv('../data/processed/unique_item_list.csv')['item_id'].tolist()
 
+# Checking leap year
 def is_leap_year(year):
     return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
 
+# Checking if date is valid
 def validate_date(date_str):
     try:
         # Try to parse the date using the specified format
@@ -38,13 +45,16 @@ def validate_date(date_str):
         ):
             # Check for February and handle leap year
             if month == 2:
-                if day <= 29 and (day <= 28 or not is_leap_year(year)):
-                    return True
+                if is_leap_year(year):
+                    return 1 <= day <= 29
                 else:
-                    return False
+                    return 1 <= day <= 28
             else:
-                # For other months, no additional checks are needed
-                return True
+                # Check for months with fewer than 31 days
+                if month in [4, 6, 9, 11]:
+                    return 1 <= day <= 30
+                else:
+                    return 1 <= day <= 31
         else:
             return False
     except ValueError:
@@ -63,7 +73,7 @@ for name in store_names:
     # Store the model in the dictionary with the store name as the key
     lgbm_models[name] = import_model
 
-
+# Load the ARIMA model using joblib
 arima_model = load(f'../models/forecasting/arima_model.joblib')
     
     
@@ -89,6 +99,7 @@ def format_features(
         'day': [day],
         'day_of_week': [day_of_week]
     }
+
 
 # Next 7 days prediction function:
 def predict_7_days(start_date, arima_model):
@@ -164,4 +175,3 @@ def predict(item_id: str, store_id: str, date: str):
     # Format the prediction result as a dictionary
     prediction_result = {'prediction': pred.tolist()}
     return JSONResponse(prediction_result)
-
