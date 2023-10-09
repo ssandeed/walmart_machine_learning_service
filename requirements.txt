@@ -1,4 +1,4 @@
-jupyterlab == 3.6.3
+# jupyterlab == 3.6.3
 pandas == 2.0.1
 scikit-learn == 1.2.2
 pmdarima == 2.0.3
