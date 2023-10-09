@@ -10,3 +10,4 @@ lightgbm == 4.1.0
 fastapi == 0.88.0
 uvicorn == 0.20.0
 joblib == 1.2.0
+gunicorn
