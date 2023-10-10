@@ -164,7 +164,7 @@ def predict(item_id: str, store_id: str, date: str):
     
     # Check if the date is in the correct format
     if not validate_date(date):
-        raise HTTPException(status_code=400, detail="Invalid Date!!! Date format should be 'YYYY-MM-DD', valid and within the range.")
+        raise HTTPException(status_code=400, detail="Invalid Date!!! Date format should be 'YYYY-MM-DD', valid and between the range 2011-01-01 and 2015-12-31")
         
     # If the item_id, store_id and date are valid, proceed with the rest of the code
     features = format_features(item_id, store_id, date)

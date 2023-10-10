@@ -21,6 +21,4 @@ COPY ./models/predictive/lgbm_store_WI_3.joblib /models/predictive/lgbm_store_WI
 
 COPY ./models/forecasting/arima_model.joblib /models/forecasting/arima_model.joblib
 
-# COPY Procfile Procfile
-
 CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "-c", "/gunicorn_conf.py", "main:app"]
