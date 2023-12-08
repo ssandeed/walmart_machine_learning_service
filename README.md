@@ -1,6 +1,3 @@
-
-==============================
-
 # Walmart Sales: Machine Learning as a Service
 
 This project is to develop a Machine Learning Solution for an American retailer-Walmart, that has 10 stores across 3 different states: California (CA), Texas (TX) and Wisconsin (WI). Each shop sells items from 3 different categories: hobbies, foods and household. The datasets used are from the [M5 Kaggle Competition.](https://www.kaggle.com/competitions/m5-forecasting-accuracy)
