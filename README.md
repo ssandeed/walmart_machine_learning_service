@@ -14,7 +14,7 @@ Model - ARIMA
 
 ## Project Overview
 
-This project aimed to develop two critical models for sales forecasting and revenue optimization in the retail industry. The objectives were to create a Predictive Sales Revenue Model and a Sales Revenue Forecasting Model using machine learning and time-series analysis techniques. These models play a pivotal role in enhancing decision-making processes at the retail sector's tactical and strategic levels.
+This project aimed to develop two critical models for sales forecasting and revenue optimization in the retail industry. The objectives were to create a Predictive Sales Revenue Model and a Sales Revenue Forecasting Model using machine learning and time-series analysis techniques. These models are pivotal in enhancing decision-making processes at the retail sector's tactical and strategic levels.
 
 ## Objective
 
@@ -22,13 +22,13 @@ The main objective of this project is to develop a predictive and forecasting mo
 
 ## Methodology
 
-- Data Collection: We have the test and train data already provided for this part of the assessment.
+- Data Collection: The test and train data are already available from the M5 Kaggle Competition.
 
 - Data Preprocessing: The collected data was preprocessed, including handling missing values and feature engineering to extract relevant information.
 
 - Feature Engineering: On date, feature engineering was done on it.
 
-- Model Development: We trained a LightGBM Regression model to predict the sales revenue for a given item in a specific store at a given date. ARIMA was used for forecasting the total sales revenue across all stores and items for the next 7 days.
+- Model Development: Trained a LightGBM Regression model to predict the sales revenue for a given item in a specific store at a given date. ARIMA was used for forecasting the total sales revenue across all stores and items for the next 7 days.
 
 - Evaluation: The model's performance was assessed using the RSME score, suitable for regression problems.
 
@@ -46,7 +46,7 @@ The main objective of this project is to develop a predictive and forecasting mo
 
 **‘/sales/stores/items/’ (GET):** Returning predicted sales volume for an input item, store and date.
 
-- Model is deployed on Heroku: https://murmuring-savannah-38202-293cb3467416.herokuapp.com/docs
+- The model is deployed on Heroku and can be accessed on https://murmuring-savannah-38202-293cb3467416.herokuapp.com/docs
 
 
 
